@@ -1,43 +1,26 @@
-// =========================
-// Output Elements
-// =========================
+let outputs = {};
 
-const hexOutput = document.getElementById("hex-output");
-const rgbOutput = document.getElementById("rgb-output");
-const decimalOutput = document.getElementById("decimal-output");
-
-// =========================
-// Update Outputs
-// =========================
+export function initUI(elements) {
+    outputs = elements;
+}
 
 export function updateOutputs(color) {
+    outputs.hex.textContent = color.hex;
 
-    hexOutput.textContent = color.hex;
-
-    rgbOutput.textContent =
+    outputs.rgb.textContent =
         `rgb(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b})`;
 
-    decimalOutput.textContent = color.decimal;
+    outputs.decimal.textContent = color.decimal;
 }
-
-// =========================
-// Reset Outputs
-// =========================
 
 export function clearOutputs() {
-
-    hexOutput.textContent = "-";
-    rgbOutput.textContent = "-";
-    decimalOutput.textContent = "-";
+    outputs.hex.textContent = "-";
+    outputs.rgb.textContent = "-";
+    outputs.decimal.textContent = "-";
 }
 
-// =========================
-// Show Error
-// =========================
-
 export function showError(message) {
-
-    hexOutput.textContent = message;
-    rgbOutput.textContent = "-";
-    decimalOutput.textContent = "-";
+    outputs.hex.textContent = message;
+    outputs.rgb.textContent = "-";
+    outputs.decimal.textContent = "-";
 }
