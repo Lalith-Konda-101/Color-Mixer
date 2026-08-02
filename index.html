@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Mixer</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <header>
+        <h1>🎨 Color Mixer</h1>
+    </header>
+
+    <main class="container">
+
+        <!-- Left Panel -->
+        <section class="panel input-panel">
+
+            <h2>Input</h2>
+
+            <label for="input-type">Color Format</label>
+
+            <select id="input-type">
+                <option value="hex">HEX</option>
+                <option value="rgb">RGB</option>
+                <option value="decimal">Decimal</option>
+            </select>
+
+            <input
+                type="text"
+                id="color-input"
+                placeholder="Enter a color..."
+                autocomplete="off"
+            >
+
+        </section>
+
+        <!-- Right Panel -->
+        <section class="panel preview-panel">
+
+            <h2>Preview</h2>
+
+            <div id="color-preview"></div>
+
+            <div class="color-info">
+
+                <p><strong>HEX:</strong> <span id="hex-output">-</span></p>
+
+                <p><strong>RGB:</strong> <span id="rgb-output">-</span></p>
+
+                <p><strong>Decimal:</strong> <span id="decimal-output">-</span></p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script type="module" src="js/main.js"></script>
+
+</body>
+</html>
