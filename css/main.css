@@ -1,1 +1,120 @@
+/* =========================
+   Google Font
+========================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+/* =========================
+   Reset
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+   Variables
+========================= */
+:root {
+    --bg-color: #080A0F;
+    --panel-color: #11161D;
+    --border-color: #1C2A3D;
+
+    --text-color: #F2F5F7;
+    --secondary-text: #A8B3C2;
+
+    --accent: #4DA3FF;
+    --accent-hover: #6DB5FF;
+
+    --radius: 18px;
+    --transition: 0.2s ease;
+}
+
+/* =========================
+   Body
+========================= */
+body {
+    font-family: "Inter", sans-serif;
+    background: radial-gradient(circle at top left, #10233f 0%, #080A0F 40%);
+    color: var(--text-color);
+
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* =========================
+   Header
+========================= */
+header {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* =========================
+   Main Container
+========================= */
+.container {
+    width: min(1100px, 90%);
+
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+
+    align-items: flex-start;
+}
+
+/* =========================
+   Panels
+========================= */
+.panel {
+    background: var(--panel-color);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: var(--radius);
+
+    padding: 30px;
+
+    width: 450px;
+    min-height: 420px;
+
+    transition: var(--transition);
+
+    box-shadow:
+        0 0 25px rgba(0, 0, 0, 0.35),
+        0 0 12px rgba(77, 163, 255, 0.05);
+}
+
+.panel:hover {
+    border-color: rgba(77, 163, 255, 0.35);
+}
+
+/* =========================
+   Panel Headings
+========================= */
+.panel h2 {
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+}
+
+/* =========================
+   Labels
+========================= */
+label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: var(--secondary-text);
+
+    font-weight: 500;
+}
