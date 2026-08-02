@@ -1,31 +1,23 @@
-// =========================
-// Preview Element
-// =========================
+let previewElement = null;
 
-const preview = document.getElementById("color-preview");
-
-// =========================
-// Update Preview
-// =========================
+export function initPreview(element) {
+    previewElement = element;
+}
 
 export function updatePreview(r, g, b) {
+    if (!previewElement) return;
 
-    const color = `rgb(${r}, ${g}, ${b})`;
+    previewElement.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 
-    preview.style.backgroundColor = color;
-
-    preview.style.boxShadow = `
+    previewElement.style.boxShadow = `
         0 0 25px rgba(${r}, ${g}, ${b}, 0.45),
         0 0 60px rgba(${r}, ${g}, ${b}, 0.2)
     `;
 }
 
-// =========================
-// Reset Preview
-// =========================
-
 export function clearPreview() {
+    if (!previewElement) return;
 
-    preview.style.backgroundColor = "transparent";
-    preview.style.boxShadow = "none";
+    previewElement.style.backgroundColor = "transparent";
+    previewElement.style.boxShadow = "none";
 }
