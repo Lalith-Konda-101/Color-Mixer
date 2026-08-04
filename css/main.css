@@ -183,3 +183,19 @@ label {
     font-size: 0.95rem;
     font-weight: 500;
 }
+
+#color-preview {
+
+    width: 180px;
+    height: 180px;
+
+    margin: 20px auto 40px;
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    border: 2px solid var(--border-color);
+
+    transition: .25s ease;
+}
