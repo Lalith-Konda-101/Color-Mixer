@@ -1,14 +1,14 @@
 import { detectFormat } from "./parser.js";
-import { initPreview } from "./preview.js";
-import { initUI } from "./ui.js";
+import { validateColor } from "./validator.js";
+import { updatePreview, clearPreview } from "./preview.js";
+import { updateOutputs, clearOutputs, showError } from "./ui.js";
 
-initPreview(document.getElementById("color-preview"));
-
-initUI({
-    hex: document.getElementById("hex-output"),
-    rgb: document.getElementById("rgb-output"),
-    decimal: document.getElementById("decimal-output")
-});
+import {
+    hexToRgb,
+    decimalToRgb,
+    rgbToHex,
+    rgbToDecimal
+} from "./converter.js";
 
 const inputField = document.getElementById("color-input");
 const inputType = document.getElementById("input-type");
@@ -20,16 +20,57 @@ function initialize() {
 }
 
 function handleInput() {
+
     const value = inputField.value.trim();
 
-    const result = detectFormat(value);
+    const parsed = detectFormat(value);
 
-    console.log(result);
+    if (!parsed.valid) {
+        clearOutputs();
+        clearPreview();
+        return;
+    }
 
-    // Later:
-    // validate(result);
-    // convert(result);
-    // updateUI(result);
+    if (!validateColor(parsed.type, parsed.value)) {
+        showError("Invalid Color");
+        clearPreview();
+        return;
+    }
+
+    let rgb;
+
+    switch (parsed.type) {
+
+        case "hex":
+            rgb = hexToRgb(parsed.value);
+            break;
+
+        case "decimal":
+            rgb = decimalToRgb(parsed.value);
+            break;
+
+        case "rgb":
+
+            const numbers = parsed.value
+                .replace(/rgb|\(|\)|\s/g, "")
+                .split(",")
+                .map(Number);
+
+            rgb = {
+                r: numbers[0],
+                g: numbers[1],
+                b: numbers[2]
+            };
+
+            break;
+    }
+
+    updatePreview(rgb.r, rgb.g, rgb.b);
+
+    updateOutputs({
+        hex: rgbToHex(rgb.r, rgb.g, rgb.b),
+        rgb,
+        decimal: rgbToDecimal(rgb.r, rgb.g, rgb.b)
+    });
+
 }
-
-initialize();
